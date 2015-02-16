@@ -6,22 +6,22 @@
 
 Meteor.startup(function() {
   Orders.allow({
-    insert: function(userId, example) {
-      if (this.userId) {
+    insert: function(userId, order) {
+      if (this.userId && order.user === this.userId) {
         return true;
       }
 
       return false;
     },
-    update: function(userId, example) {
-      if (this.userId) {
+    update: function(userId, order) {
+      if (this.userId && order.user === this.userId) {
         return true;
       }
 
       return false;
     },
-    remove: function(userId, example) {
-      if (this.userId) {
+    remove: function(userId, order) {
+      if (this.userId order.user === this.userId) {
         return true;
       }
 

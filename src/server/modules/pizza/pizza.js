@@ -6,22 +6,22 @@
 
 Meteor.startup(function() {
   Pizzas.allow({
-    insert: function(userId, example) {
-      if (this.userId) {
+    insert: function(userId, pizza) {
+      if (this.userId && Roles.userIsInRole(loggedInUser, ['admin'])) {
         return true;
       }
 
       return false;
     },
-    update: function(userId, example) {
-      if (this.userId) {
+    update: function(userId, pizza) {
+      if (this.userId && Roles.userIsInRole(loggedInUser, ['admin'])) {
         return true;
       }
 
       return false;
     },
-    remove: function(userId, example) {
-      if (this.userId) {
+    remove: function(userId, pizza) {
+      if (this.userId && Roles.userIsInRole(loggedInUser, ['admin'])) {
         return true;
       }
 
