@@ -1,9 +1,7 @@
 <template name="layoutMain">
-  <body>
-    {{> yield "header"}}
+  {{> header}}
 
-    <section class="container" id="main">
-      {{> yield}}
-    </section>
-  </body>
+  <section class="container col-sm-12 col-md-6 col-lg-6" id="main">
+    {{> yield}}
+  </section>
 </template>
