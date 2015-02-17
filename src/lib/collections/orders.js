@@ -19,9 +19,9 @@ Orders.attachSchema({
     label: 'Address',
     max: 600
   },
-  pizzas: {
+  pizza: {
     type: String,
-    label: 'Description',
+    label: 'Pizza',
     max: 200
   },
   state: {

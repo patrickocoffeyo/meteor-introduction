@@ -26,14 +26,13 @@ Router.route('/orders/create', {
     return Meteor.subscribe('pizzasAll', Meteor.userId());
   },
   action: function () {
-    this.render('orderCreate', {
-      data: function () {
-        return {
-          pizzas: function() {
-            return Pizzas.find().fetch();
-          }
-        };
-      }
-    });
+    this.render('orderCreate');
   }
+});
+
+// Register helper that returns pizza types.
+Template.registerHelper('pizzaTypes', function() {
+  return _.map(Pizzas.find().fetch(), function(pizza) {
+    return {label: pizza.title, value: pizza._id};
+  });
 });
