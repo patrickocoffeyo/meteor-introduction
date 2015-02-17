@@ -1,0 +1,15 @@
+<template name="orders">
+  {{#if orders}}
+    <table class="table table-striped table-bordered">
+      {{#each orders}}
+        <tr>
+          <td>{{order.pizzaName}}</td>
+          <td>{{order.status}}</td>
+        </tr>
+      {{/each}}
+    </table>
+  {{else}}
+    <h1>Hi! You have no orders.</h1>
+    <p>Would you like to create one? Our pizzas are truthfully delicious and will make you happy.</p>
+  {{/if}}
+</template>

@@ -1,16 +1,16 @@
 /**
  * @file
- * Defines '/login' route.
+ * Defines '/' route.
  */
 /* globals Router, Meteor */
 
-Router.route('order', {
+Router.route('/', {
   action: function () {
     if (!Meteor.userId()) {
       this.render('userAnonymousDasboard');
     }
     else {
-      this.render('order');
+      Router.go('/orders');
     }
   }
 });

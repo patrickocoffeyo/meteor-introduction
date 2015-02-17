@@ -21,7 +21,7 @@ Meteor.startup(function() {
       return false;
     },
     remove: function(userId, order) {
-      if (this.userId order.user === this.userId) {
+      if (this.userId && order.user === this.userId) {
         return true;
       }
 
@@ -30,6 +30,6 @@ Meteor.startup(function() {
   });
 });
 
-Meteor.publish('ordersByUser', function(userId) {
-  return Orders.find();
+Meteor.publish('ordersOpenByUser', function(userId) {
+  return Orders.find({user: userId, status: 'delivered'});
 });

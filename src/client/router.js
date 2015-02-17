@@ -10,7 +10,7 @@ Router.configure({
 
 Router.onBeforeAction(function () {
   if (!Meteor.userId()) {
-    this.render('login');
+    this.render('userAnonymousDasboard');
   } else {
     this.next();
   }
