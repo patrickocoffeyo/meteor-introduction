@@ -20,3 +20,20 @@ Router.route('/orders', {
     });
   }
 });
+
+Router.route('/orders/create', {
+  waitOn: function () {
+    return Meteor.subscribe('pizzasAll', Meteor.userId());
+  },
+  action: function () {
+    this.render('orderCreate', {
+      data: function () {
+        return {
+          pizzas: function() {
+            return Pizzas.find().fetch();
+          }
+        };
+      }
+    });
+  }
+});
