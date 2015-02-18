@@ -7,21 +7,21 @@
 Meteor.startup(function() {
   Pizzas.allow({
     insert: function(userId, pizza) {
-      if (this.userId && Roles.userIsInRole(loggedInUser, ['admin'])) {
+      if (userId && Roles.userIsInRole(Meteor.user(), ['admin'])) {
         return true;
       }
 
       return false;
     },
     update: function(userId, pizza) {
-      if (this.userId && Roles.userIsInRole(loggedInUser, ['admin'])) {
+      if (userId && Roles.userIsInRole(Meteor.user(), ['admin'])) {
         return true;
       }
 
       return false;
     },
     remove: function(userId, pizza) {
-      if (this.userId && Roles.userIsInRole(loggedInUser, ['admin'])) {
+      if (userId && Roles.userIsInRole(Meteor.user(), ['admin'])) {
         return true;
       }
 

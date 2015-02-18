@@ -7,21 +7,21 @@
 Meteor.startup(function() {
   Orders.allow({
     insert: function(userId, order) {
-      if (this.userId && order.user === this.userId) {
+      if (userId) {
         return true;
       }
 
       return false;
     },
     update: function(userId, order) {
-      if (this.userId && order.user === this.userId) {
+      if (userId && order.user === userId) {
         return true;
       }
 
       return false;
     },
     remove: function(userId, order) {
-      if (this.userId && order.user === this.userId) {
+      if (userId && order.user === userId) {
         return true;
       }
 
@@ -31,5 +31,5 @@ Meteor.startup(function() {
 });
 
 Meteor.publish('ordersOpenByUser', function(userId) {
-  return Orders.find({user: userId, status: 'delivered'});
+  return Orders.find({user: this.userId});
 });

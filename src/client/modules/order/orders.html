@@ -1,13 +1,15 @@
 <template name="orders">
   {{#if orders}}
-    <table class="table table-striped table-bordered">
+    <ul>
       {{#each orders}}
-        <tr>
-          <td>{{order.pizzaName}}</td>
-          <td>{{order.status}}</td>
-        </tr>
+        <li data-id="{{_id}}">
+          <span><button class="btn btn-small btn-danger delete">X</button></span>
+          <strong>{{pizzaName}}</strong>
+          <span>{{state}}</span> -
+          <span>{{address}}</span>
+        </li>
       {{/each}}
-    </table>
+    </ul>
   {{else}}
     <h1>Hi! You have no orders.</h1>
     <p>Would you like to create one? Our pizzas are truthfully delicious and will make you happy.</p>

@@ -6,7 +6,10 @@
 
 Router.route('/orders', {
   waitOn: function () {
-    return Meteor.subscribe('ordersOpenByUser', Meteor.userId());
+    return [
+      Meteor.subscribe('ordersOpenByUser'),
+      Meteor.subscribe('pizzasAll'),
+    ];
   },
   action: function () {
     this.render('orders', {
@@ -35,4 +38,19 @@ Template.registerHelper('pizzaTypes', function() {
   return _.map(Pizzas.find().fetch(), function(pizza) {
     return {label: pizza.title, value: pizza._id};
   });
+});
+
+AutoForm.hooks({
+  insertOrderForm: {
+    onSuccess: function(operation, result, template) {
+      Router.go('/orders');
+      FlashMessages.sendSuccess('Your order has been created!');
+    }
+  }
+});
+
+Template.orders.events({
+  'click .btn.delete': function (event) {
+    Orders.remove({_id: this._id});
+  }
 });

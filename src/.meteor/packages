@@ -6,7 +6,6 @@
 meteor-platform
 iron:router
 aldeed:collection2
-dburles:collection-helpers
 alanning:roles
 particle4dev:sass
 underscore
@@ -17,4 +16,6 @@ twbs:bootstrap
 accounts-password
 ian:accounts-ui-bootstrap-3
 aldeed:autoform
+mrt:flash-messages
+dburles:collection-helpers
 
