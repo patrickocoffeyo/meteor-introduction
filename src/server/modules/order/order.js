@@ -30,6 +30,6 @@ Meteor.startup(function() {
   });
 });
 
-Meteor.publish('ordersOpenByUser', function(userId) {
+Meteor.publish('ordersOpenByUser', function() {
   return Orders.find({user: this.userId});
 });
